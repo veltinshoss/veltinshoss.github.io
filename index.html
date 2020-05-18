@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>PWA Starter</title>
+
+  <base href="/">
+
+  <!-- This meta viewport ensures the webpage's dimensions change according to the device it's on. This is called Responsive Web Design.-->
+  <meta name="viewport"
+    content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="This is a PWA Starter app">
+  <meta name="theme-color" content="#686bd2">
+
+  <!-- These meta tags are Apple-specific, and set the web application to run in full-screen mode with a black status bar. Learn more at https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="PWA Starter">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- Imports an icon to represent the document. -->
+  <link rel="icon" href="asset/icons/icon_24.png" type="image/x-icon">
+
+  <!-- Imports the manifest to represent the web application. A web app must have a manifest to be a PWA. -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- A stylesheet to design the pages. -->
+  <link href="global.css" rel="stylesheet">
+  <link href="design.css" rel="stylesheet">
+  
+  <script type="module" src="build/script/pages/app-index.js"></script>
+  
+  <script>
+	function httpGet(theUrl){
+		
+		var xmlHttp = new XMLHttpRequest();
+		//xmlHttp.open( "GET", (theUrl + document.getElementById('vwert').value), false ); // false for synchronous request
+		xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+		xmlHttp.send( null );
+		return xmlHttp.responseText;
+	}
+</script> 
+
+<style>
+	body {margin-left:20px;margin-top:20px}
+	h1   {color: blue;}
+	p    {color: red;}
+	.buttonStyle {
+		margin-top:	10px;
+		width:		50px;
+		height:		50px;
+	}
+	#imageStyle {
+		background-repeat: no-repeat;
+		width:		50px;
+		height:		50px;
+		margin-left: 8px;
+		padding-bottom: 18px;
+		background-size: 18px 18px;
+	}
+	label {
+		margin-top: 10px;
+		font-size:12px;
+	}
+</style>
+
+</head>
+
+<body>
+	<!-- For more info on the pwa-update component click here https://github.com/pwa-builder/pwa-update 
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate"></script>
+  <pwa-update swpath="/pwabuilder-sw.js"></pwa-update>
+  -->
+  
+  <!-- https://github.com/pwa-builder/pwa-starter -->
+  
+<form>
+<!--
+  <label for="vwert">Wert:
+    <input type="text" id="vwert" name="vwert">
+  </label>
+</form>
+  -->
+  <!--
+  <button onclick="httpGet('http://192.168.178.29:8087/set/javascript.0.scriptEnabled.variablen.TMP.SendTelegramMessage?value=');">Telegram</button>
+  -->
+   <label for="vwert">Lautstärke Verstärker:</label><br>
+	<button class="buttonStyle" onclick="httpGet('http://192.168.178.29:8087/set/broadlink2.0.RM:0x279d_78:0f:77:63:c5:34.L.Tuner-Vol-Plus?value=true');">
+		<span id="imageStyle" style="background-image: url(assets/icons/laut.png);" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	</button>
+	  <button class="buttonStyle" onclick="httpGet('http://192.168.178.29:8087/set/broadlink2.0.RM:0x279d_78:0f:77:63:c5:34.L.Tuner-Vol-Minus?value=true');">
+			<span id="imageStyle" style="background-image: url(assets/icons/leise.png);" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	  </button>	
+	 <br><br>
+
+   <label for="vwert">3D Drucker:</label><br>
+	<button class="buttonStyle" onclick="httpGet('http://192.168.178.29:8087/set/broadlink2.0.RM:0x279d_78:0f:77:63:c5:34.L.Tuner-Vol-Plus?value=true');">
+		<span id="imageStyle" style="background-image: url(assets/icons/elektro-64.png);" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	</button>
+	  <button class="buttonStyle" onclick="httpGet('http://192.168.178.29:8087/set/broadlink2.0.RM:0x279d_78:0f:77:63:c5:34.L.Tuner-Vol-Minus?value=true');">
+			<span id="imageStyle" style="margin-right: 35px;padding-top: 5px;background-size: 35px 35px;background-image: url(assets/icons/elektro-aus-64.png);" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	  </button>	
+	 <br>	
+<!--	
+	 <div class="button">
+		<a href="">Vol +</a>
+	</div>
+-->
+
+<a href="#" class="greenButton">green</a>	
+</body>
+
+</html>
